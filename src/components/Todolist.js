@@ -2,11 +2,11 @@ import React from "react";
 
 const Todolist = ({Todo, setTodo, setEditTodo}) => {
 
-    const handleComplete = (Todo) => {
+    const handleComplete = (items) => {
         setTodo(
             Todo.map((item) =>{
-                if(item.id === Todo.id) {
-                    return { ...item, completed: !item.completed }
+                if(item.id === items.id) {
+                    return {...item, completed: !item.completed }
                 }
                 return item;
             })
@@ -22,17 +22,17 @@ const Todolist = ({Todo, setTodo, setEditTodo}) => {
     }
     return (
         <div>
-            {Todo.map((Todo) => (
-                <li className="list-item" key={Todo.id}>
-                    <input type="text" value={Todo.title} className={`list ${Todo.completed ? "complete" : ""}`} onChange={(event) => event.preventDefault()} />
+            {Todo.map((items) => (
+                <li className="list-item" key={items.id}>
+                    <input type="text" value={items.title} className={`list ${items.completed ? "complete" : ""}`} onChange={(event) => event.preventDefault()} />
                     <div>
-                        <button className="button-complete task-button" onClick={() => handleComplete(Todo)}>
+                        <button className="button-complete task-button" onClick={() => handleComplete(items)}>
                             <i className="fa fa-check-circle"></i>
                         </button>
-                        <button className="button-edit task-button" onClick={() => handleEdit(Todo)}>
+                        <button className="button-edit task-button" onClick={() => handleEdit(items)}>
                             <i className="fa fa-edit"></i>
                         </button>
-                        <button className="button-delete task-button" onClick={() => handleDelete(Todo)}>
+                        <button className="button-delete task-button" onClick={() => handleDelete(items)}>
                             <i className="fa fa-trash-o"></i>
                         </button>
                     </div>
