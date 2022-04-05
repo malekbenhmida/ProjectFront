@@ -2,9 +2,11 @@
   margin: 0;
   padding: 0;
 }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
+
 
 .container { 
-  background: linear-gradient(to right bottom, #e1b382, #c89666);
+  background: linear-gradient(45deg, #3c3b3a, #0e0d0c);
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -13,7 +15,7 @@
 }
 
 .app-wrapper {
-  background-color: #12343b;
+  background: linear-gradient(45deg, #292829, rgb(215, 212, 212),#757474);
   min-width: 450px;
   min-height: 650px;
   padding: 30px;
@@ -21,56 +23,66 @@
   border-radius: 10px;
   box-shadow: 3px 6px 40px #000;
   margin-bottom: 10px;
+  border: 2px solid white;
 }
+
+@keyframes title {
+  0%   {font-size:20px;}
+  100% {font-size:50px;}
+}
+
 
 .header h1 {
-  color: #fff;
+  color: rgb(246, 246, 248);
   text-align: center;
   margin: 30px 0;
-
+  font-family: 'Playfair Display', serif;
+  font-size:50px;
+  animation-name: title;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  letter-spacing: 4px;
 }
+
 
 .task-input {
   outline: none;
-  width: 260px;
+  width: 100%;
   padding: 15px;
-  margin-right: 25px;
   font-size: 20px;
   color: #ccc;
   background-color: #000000;
-  border: 1px solid #c89666;
-  border-radius: 10px;
+  border: 1px solid #fefefe;
+  border-right: none;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  margin-bottom: 10px;
+
 }
 
 .button-add {
-  width: 70px;
+  background-image: linear-gradient(45deg,#871d81,#e2001a );
   padding: 15px 15px;
   font-size: 20px;
-  border-radius: 10px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
   border: 0;
-  background-color: #f1af71;
   cursor: pointer;
+  color: #fff;
+  border: 1px solid #fefefe;
+  border-left: none;
+  width: 20%;
+  transition: font-size 0.1s ease-in-out;
+  margin-bottom: 10px;
+
+
 }
 
-.list-item {
-  display: flex;
-  margin: 20px 0;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  max-height: 30px;
+.button-add:hover {
+  background-image: linear-gradient(-45deg,#871d81,#e2001a);
+
 }
 
-.button-complete,
-.button.delete,
-.button-edit {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-color: transparent;
-  font-size: 28px;
-  border-radius: 50%;
-}
 
 .button-complete {
   color: #ff6c6c;
@@ -79,33 +91,111 @@
 }
 
 .button-edit {
-  color: #e2d029;
-  margin-right: 10px;
-
+  color: #5e66fa;
 }
 
-.button.delete {
-  color: lightseagreen;
-}
-
-.complete {
-  text-decoration-style: solid;
-  text-decoration-line: line-through;
-  text-decoration-color: #ff6c6c;
-  opacity: 0.6;
-}
-
-.list {
-  width: 220px;
-  background-color: #12343b;
-  border: none;
-  color: #ccc;
-  font-size: 20px;
-  padding-left: 10px;
-  margin-right: 15px;
-}
 
 input:focus,
 button:focus {
   outline: none;
+}
+
+
+
+#input_data{
+  display:flex;
+  flex-direction: row;
+}
+
+p.notyet {
+  color:#fff;
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-align: left;
+  overflow:hidden;
+
+}
+
+p.completed {
+  color:#fff;
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-align: left;
+  text-decoration: line-through;
+  text-decoration-color: rgb(141, 6, 6);
+  text-decoration-style: double;
+  overflow:hidden;
+
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead{
+  background-image: linear-gradient(-45deg,#871d81,#e2001a 50%);
+  padding: 15px;
+}
+
+tbody{
+  background-image: linear-gradient(45deg,#871d8221,#e2001a18 50%);
+  padding: 15px;
+}
+
+th{
+  color:#fff;
+}
+td,th  {
+  border: none;
+  padding: 8px;
+  width: 100px;
+  text-align: center;
+}
+@keyframes tablerow {
+  0%   { opacity: 0;}
+  100% { opacity: 1;}
+}
+
+tbody > tr {
+  opacity: 1;
+  animation-name: tablerow;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+
+tbody > tr:hover{
+  background-color: #3c3b3a2f;
+}
+
+i#done{
+  color: rgb(31, 154, 12);
+  font-size:20px;
+  cursor: pointer;
+
+}
+
+i#notyet{
+  color: rgb(249, 250, 249);
+  font-size:20px;
+  cursor: pointer;
+
+}
+
+i.fa.fa-edit{
+  font-size:20px;
+  color:rgb(35, 167, 249);
+  cursor: pointer;
+}
+
+i.fa-solid.fa-trash-can{
+  color:#860218;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+button.btn.btn-primary{
+  width:100%;
+  margin-top: 10px;
 }

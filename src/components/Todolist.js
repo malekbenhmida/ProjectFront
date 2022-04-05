@@ -1,6 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
+import swal from "sweetalert";
+
 
 const Todolist = ({Todo, setTodo, setEditTodo}) => {
+
+    const [seemore, setSeeMore] = useState(5)
 
     const handleComplete = (items) => {
         setTodo(
@@ -17,28 +21,79 @@ const Todolist = ({Todo, setTodo, setEditTodo}) => {
         const findTodo = Todo.find((Todo) => Todo.id === id);
         setEditTodo(findTodo);
     }
-    const handleDelete = ({id}) => {
-        setTodo(Todo.filter((Todo) => Todo.id !== id))
+    const handleDelete = (items) => {
+        swal({
+            title: "Are you sure?",
+            text: "Do you want to delete this Task ? ",
+            icon: "warning",
+            buttons: {
+                cancel: {
+                    text: "Cancel",
+                    value: false,
+                    visible: true,
+                    className: "cancel_button_popup",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "Confirm",
+                    value: true,
+                    visible: true,
+                    className: "confirm_button_popup",
+                    closeModal: true
+                }
+            }
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    setTodo(Todo.filter((Todo) => Todo.id !== items.id))
+
+                    swal(`***${items.title}*** is deleted.`, {
+                        icon: "success",
+                    });
+
+                } 
+            });
+        
+       
+    }
+
+    const seeMore = () => {
+       setSeeMore(seemore + 5)
     }
     return (
         <div>
-            {Todo.map((items) => (
-                <li className="list-item" key={items.id}>
-                    <input type="text" value={items.title} className={`list ${items.completed ? "complete" : ""}`} onChange={(event) => event.preventDefault()} />
-                    <div>
-                        <button className="button-complete task-button" onClick={() => handleComplete(items)}>
-                            <i className="fa fa-check-circle"></i>
-                        </button>
-                        <button className="button-edit task-button" onClick={() => handleEdit(items)}>
-                            <i className="fa fa-edit"></i>
-                        </button>
-                        <button className="button-delete task-button" onClick={() => handleDelete(items)}>
-                            <i className="fa fa-trash-o"></i>
-                        </button>
-                    </div>
-                </li>
+           
+                <table style={{display: Todo.length === 0 ? "none" : "block"}}>
+                    <thead>
+                    <tr>
+                        <th>ToDo</th>
+                        <th>Done</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                   
+                    {Todo.slice(0, seemore).map((items) => (
+                         <tbody>
+                    <tr>
+                        <td><p className={items.completed ? "completed" : "notyet"} >{items.title.substring(0,10)}{items.title.length > 10 ? "...":null}</p></td>
+                        <td>
+                            <i id={items.completed ? "done" : "notyet"}  className="fa fa-check-circle" onClick={() => handleComplete(items)}></i>
+                        </td>
+                        <td>
+                            <i className="fa fa-edit" onClick={() => handleEdit(items)}></i>
+                        </td>
+                        <td>
+                            <i class="fa-solid fa-trash-can" onClick={() => handleDelete(items)}></i>
+                        </td>
+                    </tr>
+                    </tbody>
+                    ))}
+                </table>
+                
+                <button style={{display: Todo.length > 3 ? "block" : "none"}} className="btn btn-primary" onClick={()=>seeMore()}>See More</button>
 
-            ))}
+            
         </div>
     );
 };
