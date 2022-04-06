@@ -1,10 +1,12 @@
-import React,{useState} from "react";
+import React,{useState}  from "react";
+import {  useNavigate } from 'react-router-dom'
+
 import swal from "sweetalert";
 
 
 const Todolist = ({Todo, setTodo, setEditTodo}) => {
-
     const [seemore, setSeeMore] = useState(5)
+    const navigate = useNavigate()
 
     const handleComplete = (items) => {
         setTodo(
@@ -47,7 +49,7 @@ const Todolist = ({Todo, setTodo, setEditTodo}) => {
                 if (willDelete) {
                     setTodo(Todo.filter((Todo) => Todo.id !== items.id))
 
-                    swal(`***${items.title}*** is deleted.`, {
+                    swal(`***${items.title.substring(0,10)}...*** is deleted.`, {
                         icon: "success",
                     });
 
@@ -60,22 +62,27 @@ const Todolist = ({Todo, setTodo, setEditTodo}) => {
     const seeMore = () => {
        setSeeMore(seemore + 5)
     }
+
+    const taskDetails = (id) => {
+        navigate(`/detail/${id}`)
+    }
     return (
         <div>
            
                 <table style={{display: Todo.length === 0 ? "none" : "block"}}>
                     <thead>
                     <tr>
-                        <th>ToDo</th>
+                        <th>Tasks</th>
                         <th>Done</th>
                         <th>Edit</th>
                         <th>Delete</th>
+                        <th>Detail</th>
                     </tr>
                     </thead>
                    
                     {Todo.slice(0, seemore).map((items) => (
                          <tbody>
-                    <tr>
+                    <tr >
                         <td><p className={items.completed ? "completed" : "notyet"} >{items.title.substring(0,10)}{items.title.length > 10 ? "...":null}</p></td>
                         <td>
                             <i id={items.completed ? "done" : "notyet"}  className="fa fa-check-circle" onClick={() => handleComplete(items)}></i>
@@ -84,7 +91,10 @@ const Todolist = ({Todo, setTodo, setEditTodo}) => {
                             <i className="fa fa-edit" onClick={() => handleEdit(items)}></i>
                         </td>
                         <td>
-                            <i class="fa-solid fa-trash-can" onClick={() => handleDelete(items)}></i>
+                            <i className="fa-solid fa-trash-can" onClick={() => handleDelete(items)}></i>
+                        </td>
+                        <td>
+                        <i className="fa-solid fa-eye" onClick={() => taskDetails(items.id)}></i>
                         </td>
                     </tr>
                     </tbody>

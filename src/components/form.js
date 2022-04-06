@@ -40,7 +40,7 @@ const Form = ({input, setInput, Todo, setTodo, editTodo, setEditTodo }) => {
         <form onSubmit={onFormSubmit} id="input_data">
             <input type="text" placeholder="Enter a task" className="task-input" value={input} required onChange={onInputChange}/>
             <button className="button-add" type="submit">
-                {editTodo ? <i class="fa-solid fa-pen-to-square"></i> : <i class="fa-solid fa-circle-plus"></i>}
+                {editTodo ? <i className="fa-solid fa-pen-to-square"></i> : <i className="fa-solid fa-circle-plus"></i>}
             </button>
         </form>
     )
