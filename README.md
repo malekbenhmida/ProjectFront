@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# ToDoList Project - Team: Hamza EL BORJENI, Malek BEN HMIDA, Saif Eddine GADRI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Présentation du Projet:
+Dans ce projet, on a travaillé sur une todo list en essayant d'inclure des différents styling et animations. 
+![image](https://user-images.githubusercontent.com/48828382/163670546-0c8a2e3d-2cd0-44f2-bd0d-213365f57776.png)
+## Liste des fonctionnalités implémentées:
 
-In the project directory, you can run:
+Notre application todo list inclut toutes les fonctionnalités CRUD qu'on peut utiliser:
 
-### `npm start`
+  - Create: création d'un nouveau todo.
+    Dans notre écran principal, l'utilisateur saisie le nom du nouveau todo et puis clique sur submit. La liste des todos se met à jour automatiquement en ajoutant le nouveau élément. La saisie d'un todo avant submit est obligatoire, on accepte pas un champs vide.
+    
+  - Read: lister tous les todos disponibles, pas encore finis et déjà finis.
+    Dès le lancement de l'application, une liste complète des todos disponibles s'affiche, qu'ils soient complétés ou pas encore.
+    
+  - Update: modifier le nom d'un todo. 
+    Le bouton "edit" sert à modifier le nom d'un todo.
+    
+  - Delete: supprimer un todo de la liste des todos.
+    L'utilisateur peut supprimer définitivement un todo de la liste qu'ils soit marqué comme complétés ou pas.
+    
+ 
+ 
+ ## Types d'aniamtion CSS utilisées: 
+ 
+ On a essayé d'impliquer dans notre projets différentes animations CSS. 
+ 
+  - Pour le titre du header "TodoList", on a animé le texte par une double translation d'une durée de 2 secondes.
+ 
+ ```css
+@keyframes title {
+  0%   {font-size:20px;transform: translateY(250px)}
+  100% {font-size:50px;transform: translateY(20px)}
+}
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+.header h1 {
+  color: rgb(246, 246, 248);
+  text-align: center;
+  transform: translateY(20px);
+  font-family: 'Playfair Display', serif;
+  font-size:50px;
+  animation-name: title;
+  animation-duration: 2s;
+  animation-iteration-count: 2;
+  letter-spacing: 4px;
+  margin-bottom: 50px;
+}
+```
+  - Au click sur le bouton de "Done", le texte du todo devient barré ce qui marque que le todo est complété. 
+![image](https://user-images.githubusercontent.com/48828382/163670722-29c120b7-d172-4471-a7d4-a53a73b823b1.png)
 
-### `npm test`
+###useState() : 
+  - Lorsque l'utilisateur clique sur "See more", 5 todos de plus s'affichent (s'ils existent) sur notre todolist. Ceci est fait avec un useState.
+``` javascript
+const [seemore, setSeeMore] = useState(5);
+```
+  - On a utilisé useState() aussi pour le tracking de la modification d'un todo déjà présent dans notre liste. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###useEffect() :
+  - A la modification du champs de l'entrée d'un nouveau todo, on a utilisé un useEffect pour réccupérer la valeur entrée afin de l'envoyer à notre todolist. 
 
-### `npm run build`
+  - On a utilisé useEffect() pour ajouter au localStorage le nouveau todo lors de son ajout à notre liste. 
+``` javascript
+  useEffect(() => {
+    localStorage.setItem("Todo", JSON.stringify(Todo));
+  }, [Todo]);
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - On a utilisé aussi la fameuse librairie Bootstrap pour la création de notre application qui nous a aidé à travers ses classes pré-définies et design. 
+La librairie nous a servit dans le design de notre todolist, aussi bien que le design du alert message lors de la suppression d'un todo comme l'exemple ci-dessous.
+![image](https://user-images.githubusercontent.com/48828382/163671173-aede1e9b-527d-497c-8f73-929229d88d5c.png)
+![image](https://user-images.githubusercontent.com/48828382/163671183-f9e5300f-fff0-4ad5-a98f-f927ff1a17c2.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ 
+  - FontAwsome library est une librairie d'icones qu'on a utilisé pour ajouter des icones pour ajouter plus de valeur visuelle à notre application. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Tests de la fonctionnalité:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  - On a testé sur le titre en haut 'TodoList' pour vérifier la couleur et la durée de l'animation du texte comme suit:
+![image](https://user-images.githubusercontent.com/48828382/163671766-c3bb58b3-a7d4-486d-b57b-4e4c98cdf6ef.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
