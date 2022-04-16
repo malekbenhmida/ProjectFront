@@ -1,3 +1,89 @@
+# ToDoList Project - Team: Hamza EL BORJENI, Malek BEN HMIDA, Saif Eddine GADRI
+
+
+## Présentation du Projet:
+Dans ce projet, on a travaillé sur une todo list en essayant d'inclure des différents styling et animations. 
+
+
+
+
+
+## Liste des fonctionnalités implémentées:
+
+Notre application todo list inclut toutes les fonctionnalités CRUD qu'on peut utiliser:
+
+  - Create: création d'un nouveau todo.
+    Dans notre écran principal, l'utilisateur saisie le nom du nouveau todo et puis clique sur submit. La liste des todos se met à jour automatiquement en ajoutant le nouveau élément. La saisie d'un todo avant submit est obligatoire, on accepte pas un champs vide.
+    
+  - Read: lister tous les todos disponibles, pas encore finis et déjà finis.
+    Dès le lancement de l'application, une liste complète des todos disponibles s'affiche, qu'ils soient complétés ou pas encore.
+    
+  - Update: modifier le nom d'un todo. 
+    Le bouton "edit" sert à modifier le nom d'un todo.
+    
+  - Delete: supprimer un todo de la liste des todos.
+    L'utilisateur peut supprimer définitivement un todo de la liste qu'ils soit marqué comme complétés ou pas.
+    
+ 
+ 
+ ## Types d'aniamtion CSS utilisées: 
+ 
+ On a essayé d'impliquer dans notre projets différentes animations CSS. 
+ 
+ Pour le titre du header "TodoList", on a animé le texte par une double translation d'une durée de 2 secondes.
+ 
+ ```css
+@keyframes title {
+  0%   {font-size:20px;transform: translateY(250px)}
+  100% {font-size:50px;transform: translateY(20px)}
+}
+
+
+.header h1 {
+  color: rgb(246, 246, 248);
+  text-align: center;
+  transform: translateY(20px);
+  font-family: 'Playfair Display', serif;
+  font-size:50px;
+  animation-name: title;
+  animation-duration: 2s;
+  animation-iteration-count: 2;
+  letter-spacing: 4px;
+  margin-bottom: 50px;
+}
+```
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
