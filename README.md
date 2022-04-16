@@ -20,6 +20,11 @@ Notre application todo list inclut toutes les fonctionnalités CRUD qu'on peut u
   - Delete: supprimer un todo de la liste des todos.
     L'utilisateur peut supprimer définitivement un todo de la liste qu'ils soit marqué comme complétés ou pas.
     
+Pour le routage on a utilisé la librairie 'react-router-dom' afin de naviguer entre la page principle et la page des détails du todo. 
+![image](https://user-images.githubusercontent.com/48828382/163671945-08844b22-a6ff-49be-a7d5-0cb7883b05c9.png)
+![image](https://user-images.githubusercontent.com/48828382/163671956-1a16439a-d2b7-46a2-9ab5-edeec1ddb0bb.png)
+
+    
  
  
  ## Types d'aniamtion CSS utilisées: 
